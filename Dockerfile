@@ -13,7 +13,8 @@ WORKDIR /app
 RUN git clone https://github.com/stephengpope/no-code-architects-toolkit.git .
 
 # Install Python dependencies
-RUN pip install -r requirements.txt
+RUN pip install -r requirements.txt \
+    && pip install jsonschema boto3 flask requests python-dotenv
 
 # Replace the s3_toolkit.py with our modified version
 COPY s3_toolkit_fixed.py /app/services/s3_toolkit.py
